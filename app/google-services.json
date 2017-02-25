@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "186940487049",
+    "firebase_url": "https://thecompletecare-b2c05.firebaseio.com",
+    "project_id": "thecompletecare-b2c05",
+    "storage_bucket": "thecompletecare-b2c05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186940487049:android:49326612ad8c895a",
+        "android_client_info": {
+          "package_name": "ubs.thecompletecare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186940487049-56624clipuvu5sqefiurmtgps3jjmv7r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ubs.thecompletecare",
+            "certificate_hash": "d7b40d978e770b9bac2e50eb1c0901fc25e5b507"
+          }
+        },
+        {
+          "client_id": "186940487049-ifjpatg9mhr2leovs3nv15o32563obi0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBcQErV3KyeAk8MFhrDrZIBV1rra5bE1c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186940487049-ifjpatg9mhr2leovs3nv15o32563obi0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
