@@ -26,6 +26,14 @@
             android:label="@string/title_activity_medicine_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".PatientEntry"></activity>
+        <activity android:name=".NotificationActivity" />
+
+        <receiver android:name=".AlarmReceiver">
+            <intent-filter>
+                <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
