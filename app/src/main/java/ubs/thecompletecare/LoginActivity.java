@@ -22,6 +22,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
     private int RC_SIGN_IN = 9001;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mDatabase;
+
 
 
 
@@ -100,13 +108,55 @@ public class LoginActivity extends AppCompatActivity {
         Log.d("Sign IN", "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
+           final GoogleSignInAccount acct = result.getSignInAccount();
             //mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
            // updateUI(true);
             Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_LONG).show();
             firebaseAuthWithGoogle(acct);
-            Intent mainActivity = new Intent(this,MainActivity.class);
-            startActivity(mainActivity);
+            String TAG = "Firebase DB add";
+
+            try{
+                mDatabase = FirebaseDatabase.getInstance().getReference();
+                mDatabase.child("users").child(acct.getId()).child("email").setValue(acct.getEmail()).addOnCompleteListener(
+                        new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                DatabaseReference userReference = mDatabase.child("users");
+                                userReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+
+                                CareGiverDetails careGiverObject = new CareGiverDetails();
+                                careGiverObject.setEmail(acct.getEmail());
+                                careGiverObject.setId(acct.getId());
+
+                                Intent mainActivity = new Intent(getApplicationContext(),MainActivity.class);
+                                mainActivity.putExtra("Email",acct.getEmail());
+                                mainActivity.putExtra("ID",acct.getId());
+                                startActivity(mainActivity);
+                            }
+                        }
+
+
+                );
+            }
+            catch(Exception e)
+            {
+                Toast.makeText(getApplicationContext(),"Adding to firebase failed:" + e.toString(),Toast.LENGTH_LONG).show();
+
+            }
+
+
+
 
         } else {
             // Signed out, show unauthenticated UI.
