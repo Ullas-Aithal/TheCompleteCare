@@ -13,19 +13,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:label="The Complete Care">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:label="Services"/>
         <activity
             android:name=".MedicineList"
-            android:label="@string/title_activity_medicine_list"
+            android:label="Medicine List"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".PatientEntry"></activity>
+        <activity android:name=".PatientEntry"
+            android:label="Patient Entry">
+
+        </activity>
         <activity android:name=".NotificationActivity" />
 
         <receiver android:name=".AlarmReceiver">

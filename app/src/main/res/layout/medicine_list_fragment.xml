@@ -2,15 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
-
+    >
 
     <ListView
-        android:layout_marginTop="40sp"
+        android:layout_marginTop="60sp"
+        android:layout_marginBottom="60sp"
+
         android:layout_width="match_parent"
-        android:layout_height="398dp"
+        android:layout_height="380dp"
         android:id="@+id/medicineListViewLayout"
-        android:divider="@android:color/black">
+
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="2dp">
 
     </ListView>
 </LinearLayout>

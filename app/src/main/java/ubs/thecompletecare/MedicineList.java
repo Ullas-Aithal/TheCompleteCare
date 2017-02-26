@@ -50,6 +50,7 @@ public class MedicineList extends AppCompatActivity
     private DatabaseReference db;
     private PendingIntent broadcast;
     private PendingIntent broadcast1;
+    private String patientName;
 
 
      int patientID1 = -1;
@@ -197,8 +198,8 @@ public class MedicineList extends AppCompatActivity
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
 
-        calendar.set(Calendar.HOUR_OF_DAY, 2);
-        calendar.set(Calendar.HOUR, 39);
+        calendar.set(Calendar.HOUR_OF_DAY, 8);
+        calendar.set(Calendar.HOUR, 4);
 
 
         broadcast1 = PendingIntent.getBroadcast(this, 1, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -206,11 +207,11 @@ public class MedicineList extends AppCompatActivity
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, broadcast1);
 
-        calendar.set(Calendar.HOUR_OF_DAY, 2);
-        calendar.set(Calendar.MINUTE, 41);
-
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                AlarmManager.INTERVAL_DAY, broadcast1);
+//        calendar.set(Calendar.HOUR_OF_DAY, 2);
+//        calendar.set(Calendar.MINUTE, 41);
+//
+//        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+//                AlarmManager.INTERVAL_DAY, broadcast1);
 
 //        Calendar cal = Calendar.getInstance();
 //        cal.add(Calendar.SECOND, 15);

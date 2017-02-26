@@ -1,5 +1,6 @@
 package ubs.thecompletecare;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,9 +65,12 @@ public class PatientEntry extends AppCompatActivity {
                 d.child("caretakerID").setValue(userId.toString());
                 ud.child("patientCounter").setValue(Integer.toString(c));
                 ud.child("users").child(userId).child("patientID").setValue(Integer.toString(c));
+               finish();
 
             }
         });
+
+
 
 
 

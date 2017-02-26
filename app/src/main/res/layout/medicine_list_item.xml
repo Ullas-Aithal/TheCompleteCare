@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="10sp">
 
 
     <RelativeLayout
@@ -17,7 +18,8 @@
             android:id="@+id/medicineIdTextLayout"
             android:layout_alignParentLeft="true"
             android:textSize="30sp"
-            />
+
+            android:textColor="@android:color/background_dark" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,15 +47,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Days Left"
+                android:textSize="20sp"
                 android:layout_alignParentLeft="true"
                 android:id="@+id/daysLeftLabelLayout"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:layout_marginBottom="15sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
                 android:id="@+id/medicineDaysLeftLayout"
                 android:layout_alignParentRight="true"
                 android:visibility="gone"
+                android:layout_marginBottom="15sp"/>
                 />
         </RelativeLayout>
         <LinearLayout
@@ -72,6 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:paddingLeft="-5sp"
+            android:layout_marginBottom="20sp"
             >
             <CheckBox
                 android:layout_width="wrap_content"

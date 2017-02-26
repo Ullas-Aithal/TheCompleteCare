@@ -7,7 +7,10 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medicines"/>
     <include
         layout="@layout/app_bar_medicine_list"
         android:layout_width="match_parent"
@@ -21,9 +24,11 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_medicine_list"
         app:menu="@menu/activity_medicine_list_drawer" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:id="@+id/medicineListFrameLayout">
 
     </FrameLayout>

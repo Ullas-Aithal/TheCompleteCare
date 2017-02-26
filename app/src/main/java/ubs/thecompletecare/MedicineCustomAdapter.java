@@ -66,7 +66,7 @@ public class MedicineCustomAdapter extends ArrayAdapter<Medicines> {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(b.getText() == "MORE..")
+                if(b.getText().equals("MORE.."))
                 {
                     b.setText("LESS..");
 
