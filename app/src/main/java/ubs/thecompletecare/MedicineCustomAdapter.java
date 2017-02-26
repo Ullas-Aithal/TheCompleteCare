@@ -66,7 +66,17 @@ public class MedicineCustomAdapter extends ArrayAdapter<Medicines> {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),Integer.toString(position),Toast.LENGTH_SHORT).show();
+                if(b.getText() == "MORE..")
+                {
+                    b.setText("LESS..");
+
+                }
+                else
+                {
+                    b.setText("MORE..");
+                }
+
+
 
                 if(medicineDaysLeft.getVisibility() == GONE)
                 {

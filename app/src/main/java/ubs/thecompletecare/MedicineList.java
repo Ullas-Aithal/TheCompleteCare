@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -44,14 +45,55 @@ public class MedicineList extends AppCompatActivity
     private DatabaseReference db;
 
 
+     int patientID1 = -1;
+
+    public void setValue(int a)
+    {
+        patientID1 = a;
+        Log.i("patientID",Integer.toString(patientID1));
+    }
+    public int getValue()
+    {
+        return patientID1;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Intent i = getIntent();
+        final String userEmail = i.getStringExtra("Email");
+        final String userId = i.getStringExtra("ID");
         db = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.activity_medicine_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        DatabaseReference patientID = FirebaseDatabase.getInstance().getReference();
+
+        patientID.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                setValue(Integer.parseInt(dataSnapshot.child(userId).child("patientID").getValue().toString()));
+                Log.i("DATA CHANGE",Integer.toString(getValue()));
+
+                MedicineFragment mf = new MedicineFragment();
+                Bundle b = new Bundle();
+                b.putString("Email",userEmail);
+                b.putString("ID",userId);
+                b.putString("patientID",Integer.toString(getValue()));
+                mf.setArguments(b);
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.medicineListFrameLayout,mf,"Medicine Fragment");
+                ft.commit();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +113,8 @@ public class MedicineList extends AppCompatActivity
 
 
 
+
+
                 dialogBuilder.setTitle("Add New Medicine");
 
                 dialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
@@ -78,7 +122,7 @@ public class MedicineList extends AppCompatActivity
 
                         try {
 
-                            final DatabaseReference medicines = db.child("patient").child("0").child("medicines");
+                            final DatabaseReference medicines = db.child("patient").child(Integer.toString(getValue())).child("medicines");
 
                             medicines.child(addMedsET.getText().toString()).setValue("").addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -134,11 +178,6 @@ public class MedicineList extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        MedicineFragment mf = new MedicineFragment();
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.medicineListFrameLayout,mf,"Medicine Fragment");
-        ft.commit();
 
 
 

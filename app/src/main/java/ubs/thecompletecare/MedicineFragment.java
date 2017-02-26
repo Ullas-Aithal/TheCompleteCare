@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -32,10 +33,17 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
  */
 
 public class MedicineFragment extends Fragment {
+    String userEmail;
+    String userId;
+    String patientID;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Bundle b = getArguments();
+        userEmail = b.getString("Email");
+        userId = b.getString("ID");
+        patientID = b.getString("patientID");
 
         return inflater.inflate(R.layout.medicine_list_fragment,container,false);
     }
@@ -51,8 +59,10 @@ public class MedicineFragment extends Fragment {
 
 
 
-        try {
-            db.child("patient").child("0").child("medicines").addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+
+            db.child("patient").child(patientID).child("medicines").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -81,11 +91,7 @@ public class MedicineFragment extends Fragment {
 
                 }
             });
-        }
-        catch(Exception e)
-        {
-            Toast.makeText(getContext(), "Exception" + e.toString(), Toast.LENGTH_SHORT).show();
-        }
+
 
 
 
