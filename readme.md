@@ -11,13 +11,10 @@ The Complete Care is an android app that aims to provide a complete suite of too
     * Clone/download the directory of the source code https://github.com/Ullas-Aithal/TheCompleteCare.git
 	* Import the project into Android Studio File->New->Import Project
 	* Select the project folder TheCompleteCare-master
-	* Wait for the build to complete (there should be no progress bar at the right of the)
-	
-## [INTERFACES] _(if applicable)_ 
-
-## OTHER SOURCES OF DOCUMENTATION
+	* Wait for the build to complete (there should be no progress bar at the bottom right of android studio)
+	* Connect your device to and run the app by clicking on "Run app" under Run menu
 
 ## Contributor Guide
-[LINK TO CONTRIBUTING.md]
+[Contribution guidelines for this project](Contributing.md)
 
 ## License 
